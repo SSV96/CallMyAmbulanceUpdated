@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="utf-8"  name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/stylesUsers.css">
+    <title>
+        box
+    </title>
+</head>
+
+ <body>
+
+
+
+    <table >
+        <tr>
+          <th>ID</th>
+          <th>fname</th>
+          <th>lname</th>
+          <th>email</th>
+          <th>Created At</th>
+        </tr>
+        <% for(let i=0 ;i<result.length; i++) {  %>
+        <tr>
+          <td><%=result[i].id%> </td>
+          <td> <%=result[i].fname%> </td>
+          <td><%= result[i].lname %> </td>
+          <td> <%= result[i].email %></td>
+          <td>  <%=result[i].CreatedTime%> </td>
+        </tr>
+        <% } %>
+      </table>
+
+      <a href="/">Click here to home </a>
+</body>
+</html>

@@ -3,6 +3,8 @@ const usrctrl=require('../controllers/userController');
 
 let router =express.Router();
 
-router.post("/send",usrctrl.createNewUser);
+//router.post("/send",usrctrl.createNewUser);
+
+router.get("/receive",usrctrl.getUsers);
 
 module.exports=router;
