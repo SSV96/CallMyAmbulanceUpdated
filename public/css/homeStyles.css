@@ -1,50 +1,10 @@
-body{
-  margin: 0;
+div.dropdown{
+  position: relative;
+  padding: 8px;
 }
-
-ul {
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-
+.col-middle{
+  border: solid red 2px;
 }
-
-
-
-li {
-  float: left;
-}
-
-li a {
-  font-size: large;
-  font-family: 'Times New Roman', Times, serif;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.who-we-are{
-  width: auto;
-font-size: large;
-font-family: 'Courier New', Courier, monospace;  
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
-}
-
-footer{
-  text-align: center;
-
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  bottom: 0;
+.dropdownDIVLogin{
+  padding-right: 6px;
 }

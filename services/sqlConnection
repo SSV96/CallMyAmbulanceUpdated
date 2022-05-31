@@ -11,7 +11,7 @@ function executeQuery(sql,data,callback){
 
         if(err){
             callback(err);
-        }
+        } 
         else{
             console.log("Connection Established Successfully");
             connection.query(sql,data,function(err1,result){

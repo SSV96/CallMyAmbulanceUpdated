@@ -5,7 +5,7 @@ const sqlConnection= require("../services/sqlConnection");
 function truncateAll(callback){
                     
     let values=[];
-    const sql="truncate table useram";
+    const sql="truncate table  otpLogin";
     sqlConnection.executeQuery(sql,values,function(err,result){
         
         callback(err,result);

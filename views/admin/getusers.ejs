@@ -19,6 +19,7 @@
           <th>lname</th>
           <th>email</th>
           <th>Created At</th>
+          <th>Password</th>
         </tr>
         <% for(let i=0 ;i<result.length; i++) {  %>
         <tr>
@@ -27,6 +28,7 @@
           <td><%= result[i].lname %> </td>
           <td> <%= result[i].email %></td>
           <td>  <%=result[i].CreatedTime%> </td>
+          <td>  <%=result[i].password%> </td>
         </tr>
         <% } %>
       </table>

@@ -1,11 +1,15 @@
+require ('dotenv').config();
+
+
 module.exports={
 
     mysql:{
-        prod:{
-            "host":"sql6.freemysqlhosting.net",
-            "user":"sql6491145",
-            "password":"XKJQJZJSwp",
-            "database":"sql6491145"
-        }
+       prod:{
+           host:process.env.host,
+           user:process.env.user,
+           password:process.env.password,
+           database:process.env.database
+           
+       }
     }
 }
