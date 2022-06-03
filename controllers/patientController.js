@@ -25,11 +25,7 @@ PatientModal.CreatePatient(data,function(err,result){
     return res.status(400).render('../views/ErrorPages/queryErrors.ejs',{error:err});
    }
   
-   return res.status(200).send({
-     "message":"data Successfully inserted",
-     "success":true,
-     "rows":result
-  });
+   return res.status(200).render('../views/patient/patientLogin');
 
    
 
