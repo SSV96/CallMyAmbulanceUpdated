@@ -113,6 +113,16 @@ function Insertoffers(data,callback){
  }
 
 
+function  CheckingStatusOfOffer(data,callback){
+
+  let values=[];
+  
+  const sql=`SELECT * from offers where status='ACCEPTED' `;
+
+
+}
+
+
 
 module.exports={CreatePatient,getPatients,PatientLoginCheck,AmbulanceBookingRequest,getBookingsById,getcurrentBookingByID,Insertoffers};
 

@@ -14,10 +14,15 @@ router.get('/Driverlogin',DriverController.DriverLogin);
 
 router.post('/DriverLoginPage',DriverController.DriverloginAuthentication)
 
-router.post('/DriverLoginSuccess',DriverController.DriverLoginSuccessPage);
+
 
 router.post('/DriverStatus/update',DriverController.driverStatusUpdate);
 
 router.post('/DriverOffers',DriverController.driveroffersList);
+
+
+router.post('/DriverAcceptedOffer',DriverController.driverAccepteOffer);
+
+router.post('/DriverRejectedOffer',DriverController.driverRejectedOffer);
 
 module.exports=router;

@@ -50,3 +50,6 @@
         /* webkit-overflow-scrolling: touch; */
       }
  
+      .hidden{
+        display: none;
+      }

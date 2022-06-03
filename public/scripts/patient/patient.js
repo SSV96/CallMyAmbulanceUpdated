@@ -1,4 +1,3 @@
-
 let patientID=document.querySelector(".Patientid").textContent;
 const bookingStatus=document.querySelectorAll('.BookingStatus');
 let bookingDetails;
@@ -42,22 +41,26 @@ function book(){
         },"body":JSON.stringify(bookingDetails) })
       
       return InsertOffers;
-      }).then(post2=>{return post2.json()}).then(post3=>{console.log("finaly got",post3)})
-  }
+      }).then(post2=>{return post2.json()}).then(
+        post3=>{
+          console.log("finaly got",post3)
+        })
+
+        let searchingforDrivers=fetch('/patient/searchingfordrivers',{"method":"post",headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          },"body":JSON.stringify(bookingDetails) }).then(data5=>{
+            
+          })
+  
+  
+  
+  
+  
+  
+    }
 
 
 
 
-//let time =  setInterval(() => {
-               
-  //           if(++a>20){
-  //             console.log(a);
-  //             clearInterval(time);
-  //             bookingStatus[1].classList.toggle('hidden');
-  //             bookingStatus[0].textContent="SuccessFullyBooked";
-  //           }
-  //           console.log(a);
-          
-  //         } ,2000);
-    
-  //   console.log("post data",post);  
+//

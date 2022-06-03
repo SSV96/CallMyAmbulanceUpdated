@@ -73,8 +73,8 @@
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
                 <div class="form-check form-switch">
-                  <input class="form-check-input Driversavailabilty" type="checkbox" role="switch" id="AvailabilityCheck">
-                  <label class="form-check-label Driversavailabilty" for="flexSwitchCheckDefault">Offline</label>
+                  <input class="form-check-input Driversavailabilty"  type="checkbox" role="switch" id="AvailabilityCheck" checked="true">
+                  <label class="form-check-label Driversavailabilty" for="flexSwitchCheckDefault">Available</label>
                 </div>
                                      
               </div>
@@ -90,36 +90,44 @@
 <!-- Offers Panel -->
 <div class="p-5 mb-4 bg-dark rounded-3 text-light">
   <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold">Offers</h1>
+    <h1 class="display-5 fw-bold Offers "></h1>
+    
     <div class="row">
     
       <div class="p-2 col-lg-6 col-md-12 ">
         <div class="mb-3">
-          <p>From : <b class="BookingDetails"></b></p>                     
+          <p>From : <b class="BookingDetails  "></b></p>                     
         </div>
       </div>
       
       <div class="p-2 col-lg-6 col-md-12 ">
         <div class="mb-3">
-          <p>To : <b class="BookingDetails"></b></p>                     
+          <p>To : <b class="BookingDetails  "></b></p>                     
         </div>
       </div>
 
       <div class="p-2 col-lg-6 col-md-12 ">
         <div class="mb-3">
-          <p>Distance : <b class="BookingDetails"></b></p>                     
+          <p>Distance : <b class="BookingDetails  "></b></p>                     
         </div>
       </div>
       <div class="p-2 col-lg-6 col-md-12 ">
         <div class="mb-3">
-          <p>Fare : <b class="BookingDetails"></b></p>                     
+          <p>Fare : <b class="BookingDetails  "></b></p>                     
         </div>
       </div>
+      <div class="col-lg-3 col-md-12 ">
+        <div class="mb-3">
+          <button type="button" class="p-2 m-lg-2 btn btn-success btn-lg accept-Offer StatusButtons " onclick="ConformOffer();return false">Accept</button>
 
-      <div class="p-2 col-lg-6 col-md-12 ">
-        <div class="mb-3">
-          <button type="button" class="btn btn-success btn-lg accept-Offer" onclick="ConformOffer();return false">Accept</button>
+          <button type="button" class="p-2 btn btn-danger btn-lg accept-Offer StatusButtons " onclick="rejectOffer();return false">Reject</button>
           <!-- <button type="button" class="btn btn-danger">Danger</button>                   -->
+        </div>
+      </div>
+      <div class=" col-lg-3 col-md-12 ">
+        <div class="mb-3">
+          
+         <!--  -->
         </div>
       </div>
 
@@ -134,41 +142,39 @@
             <h2>Current Rides</h2>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>From: <b class="BookingConformDetails">Tirupati   </b> </p>                                       
+              <p>From: <b class="BookingConformDetails">   </b> </p>                                       
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>To: <b class="BookingConformDetails">Kodur   </b> </p>                                       
+              <p>To: <b class="BookingConformDetails">   </b> </p>                                       
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>Fare: <b class="BookingConformDetails">3,445 </b> </p>                                       
+              <p>Fare: <b class="BookingConformDetails"> </b> </p>                                       
               </div>
             </div>
-           <!-- heroku pg:psql postgresql-polished-73473 --app ambulancelifeservice -->
-           <!-- git add . -->
-           <!-- git commit -am "make it better" -->
-           <!-- git push heroku master -->
+            <button class="btn btn-primary" type="button">Complete </button>
           </div>
         </div>
+        
         <div class="col-md-6">
           <div class="h-100 p-5 bg-light border rounded-3">
             <h2>Patient Details</h2>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>Patient ID: <b class="patientDetails">1 </b> </p>                                       
+              <p>Patient ID: <b class="patientDetails"> </b> </p>                                       
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>Name: <b class="patientDetails">Sathya </b> </p>                                       
+              <p>Name: <b class="patientDetails"> </b> </p>                                       
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <p>Phone: <b class="patientDetails">8096843678 </b> </p>                                       
+              <p>Phone: <b class="patientDetails"> </b> </p>                                       
               </div>
             </div>
             <button class="btn btn-outline-secondary" type="button">Cancel </button>
@@ -189,12 +195,27 @@
     
         <div class="p-5 mb-4 bg-light rounded-3">
           <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Personal Details</h1>
-           <p>Name:  <%= result[0].fname %> <%= result[0].lname %></p> 
-           <p>Designation : Driver </p> 
-           <p>Email :<%= result[0].email %> </p> 
-           
-            <button class="btn btn-primary btn-lg" type="button">Example button</button>
+            <h1 class="display-5 fw-bold">To  be Updated </h1>
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Booking ID</th>
+                  <th scope="col">Patient Name</th>
+                  <th scope="col">Date</th>               
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td></td>
+                  <td></td>
+                  
+                </tr>                
+              </tbody>
+            </table>
+
+
           </div>
         </div>
       <footer class="pt-3 mt-4 text-muted border-top">

@@ -1,18 +1,17 @@
 const sqlConnection= require("../services/sqlConnection");
 
 function CreateUser(data,callback){
-    let values=[];
-     
-     values[0]=data.FirstName;
-     values[1]=data.LastName;
-     values[2]=data.Email;
-     values[3]=new Date();
-     values[4]=data.password;
-     values[5]=data.phone;
+    
+    let values=Object.values(data);
+    
+    values[5]=new Date();
 
-     console.log(values);
-    const sql="insert into useram (fname,lname,email,CreatedTime,PASSWORD,phone) values (?,?,?,?,?,?)";
+    console.log(values);
+
+    const sql="INSERT INTO Driver_INFO (fname,lname,email,password,phone,CreatedTime) values (?,?,?,?,?,?)";
+
     sqlConnection.executeQuery(sql,values,function(err,result){
+        
         callback(err,result);
         
     })
@@ -21,7 +20,7 @@ function CreateUser(data,callback){
 
 function getAllUsers(callback){
     let values=[];
-    const sql="select * from useram ";
+    const sql="select * from Driver_INFO ";
     sqlConnection.executeQuery(sql,values,function(err,result){
         
         callback(err,result);
@@ -32,77 +31,33 @@ function getAllUsers(callback){
 function usercheck(data, callback){
      let values = data.Email;  
      console.log(values,"from user check ")
-    const sql =" select * from useram where email = ?" ;
-    sqlConnection.executeQuery(sql,values,function(err,result){
+     const sql =" select * from Driver_INFO where email = ?" ;
+     sqlConnection.executeQuery(sql,values,function(err,result){
         callback(err,result);
     })
-
 }
+
+
+
 
 function loginCheck(data,callback)
 {
-    let  email = data.email;
-   
-   let  values=[email]
-     
-        
-    console.log("from ",values)
-   const sql =" select * from useram where email = ?";
+   let  values=data.email;
+   console.log("from Login Check ",values)
+   const sql =" select * from Driver_INFO where email = ?";
    sqlConnection.executeQuery(sql,values,function(err,result){
-       callback(err,result);
-   })
-
-
-    
+   callback(err,result);
+ })   
 }
 
 
-
-function getUserById(data,callback){
-  let values=[];
-  const sql="select * from useram where email=? ";
-  sqlConnection.executeQuery(sql,values,function(err,result){
-  callback(err,result);
- })
-}
-
- function otpInsert(data,callback){
-    let values=[];
-    values[0]=Number(data.id);
-    values[1]=Number(data.otp);
-    console.log("from otpInsert",values);
-    const sql="insert into otpLogin (id,otp) values (?,?)";
-
- sqlConnection.executeQuery(sql,values,function(err,result){
-        
- callback(err,result);
-})
-
-
-
-
- }
-
-function otpcheck(data,callback){
-   let values=data.otp;
-   console.log("from otpInsert",values);
-   const sql="select id, fname,lname,email,CreatedTime,Phone   from otpLogin natural join useram where otp= ?";
-
-   sqlConnection.executeQuery(sql,values,function(err,result){
-        
-    callback(err,result);
-})
-
-
-
-}
 
 
 function InsertDriversAvailabitlity(data,callback){
     let values=data.Email;
     console.log(data);
     console.log("from Insert Drivers  Avialbility modal",values);
-    const sql="select id from useram where email=?";
+    const sql="select id from Driver_INFO where email=?";
    
     sqlConnection.executeQuery(sql,values,function(err,result){
     
@@ -116,9 +71,9 @@ function InsertDriversAvailabitlity(data,callback){
 
         
     })
-       
-
 }
+
+
 function UpdateDriversAvailabilty(data,callback){
     let values=[data.available,data.id];
     console.log("from driver status update Modal",values);
@@ -131,14 +86,58 @@ function UpdateDriversAvailabilty(data,callback){
     })
 }
 
+
+
+
 function driverOffersList(data,callback){
 let values=data.id;
 const sql="select * from Bookings  where  idBookings in (select booking_id from offers where Driver_id=? and status='pending')";
     sqlConnection.executeQuery(sql,values,function(err,result){
-        
+        console.log("From Driver modal offers list for Drivers",result)
         callback(err,result);
     })
 }
 
 
-module.exports={CreateUser,getAllUsers,usercheck,getUserById,loginCheck,otpInsert,otpcheck,InsertDriversAvailabitlity,UpdateDriversAvailabilty,driverOffersList};
+// Accept Ride
+
+ function AcceptOffer(data,callback){
+//  data we need Booking ID ,Driver ID, need to update the Status to Accept in BOOKING table and offers Table
+    let values=[data.driver_id,data.booking_Id];
+   
+    console.log("From Driver Accepted Modal",values);
+    
+    const sql=`UPDATE offers set status='ACCEPTED' where Driver_id=? and booking_id=?`;
+   
+    sqlConnection.executeQuery(sql,values,function(err,result){
+        
+         values =data.patientId;
+        
+         console.log("From Driver Accepted Modal2",values);
+        
+         const sql1=`SELECT * FROM patient WHERE id=?`;
+         
+         sqlConnection.executeQuery(sql1,values,function(err1,result1){
+
+             callback({err_one:err,err_two:err1},{result1:result,result2:result1});
+        });   
+    });
+}
+
+     function rejectOffer(data,callback){
+         //  data we need Booking ID ,Driver ID, need to update the Status to Accept in BOOKING table and offers Table
+     let values=[data.driver_id,data.booking_Id];
+             
+     const sql=`DELETE FROM offers  where Driver_id=? and booking_id=?`;
+     sqlConnection.executeQuery(sql,values,function(err,result){
+         callback(err,result);
+     });
+ }
+    
+function PreviousBookings(data,callback){
+      
+      let values=[];
+      const sql=`select  from Bookings  where  idBookings in (select booking_id from offers where Driver_id=? and status='pending') `;
+}
+
+module.exports={CreateUser,getAllUsers,usercheck,loginCheck,InsertDriversAvailabitlity,UpdateDriversAvailabilty,driverOffersList,AcceptOffer,rejectOffer};
