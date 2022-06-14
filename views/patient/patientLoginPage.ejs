@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -78,16 +77,16 @@
             <div class="container">
               <div class="row">
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label> User ID : <b class="Patientid"><%= result[0].id %></b></label>
+             <label> PatientID :</label> <label class="PatientDetails"> <%= result[0].id %> </label>
                 </div>
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label>Name : <%= result[0].name %></label>
+                  <label> Name :</label> <label class="PatientDetails"> <%= result[0].name %> </label>
                 </div>
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label>Email : <%= result[0].email %></label>
+                  <label> Email :</label>   <label class="PatientDetails"> <%= result[0].email %> </label>
                 </div>               
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label>Phone : <%= result[0].Phone %></label>
+                  <label>  Phone :</label>    <label class="PatientDetails"> <%= result[0].Phone %> </label>
                 </div>
               </div>
             </div>                               
@@ -125,11 +124,11 @@
                   </div>
                   <div class="p-2 col-lg-6 col-md-12">
                     <div class="mb-3">
-                      <button class="btn btn-outline-light" type="button" onclick="book(); return false;">Book</button>   
-                      <b class="p-2 BookingStatus hidden">Serching for Drivers </b>                                      
+                      <button class="btn btn-outline-light bookingButton" type="button" >Book</button>   
+                      <b class="p-2 BookingStatus hidden">Serching for Drivers </b>    
                     </div>
                   </div>
-          
+                  <!-- return onclick="book(); false;                                  -->
                   <div class="spinner-border p-2 col-lg-6 col-md-12 BookingStatus hidden">
                     <div class="mb-3">
                      <span class="visually-hidden">Loading...</span>                     
@@ -146,25 +145,25 @@
               <h2>Driver Details</h2>
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label for="DriverName" class="form-label DriverDetails">Name:</label>
+             <label>Id:</label> <label for="DriverName" class="form-label DriverDetails"></label>
                                        
                 </div>
               </div> 
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label for="AmbulnceNo" class="form-label DriverDetails">Ambulance No:</label>
+                  <label>Name : </label> <label for="AmbulnceNo" class="form-label DriverDetails"></label>
                                        
                 </div>
               </div> 
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label for="phone" class="form-label DriverDetails">Phone :</label>
+                  <label> Email :</label> <label for="phone" class="form-label DriverDetails"></label>
                                        
                 </div>
               </div> 
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label for="InputEmail1" class="form-label DriverDetails">Phone :</label>
+                  <label> Phone :</label> <label for="InputEmail1" class="form-label DriverDetails"></label>
                                        
                 </div>
               </div> 
@@ -265,6 +264,9 @@
     
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+   
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/patient/patient.js"></script>
+ 
   </body>
 </html>

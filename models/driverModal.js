@@ -133,11 +133,20 @@ const sql="select * from Bookings  where  idBookings in (select booking_id from 
          callback(err,result);
      });
  }
-    
+     
+function driverCompletedOffer(data,callback){
+    let values=[data.driver_id,data.booking_Id];
+    const sql=`UPDATE  offers set status="COMPLETED"  where Driver_id=? and booking_id=?`;
+    sqlConnection.executeQuery(sql,values,function(err,result){
+        callback(err,result);
+    });
+}
+
+
 function PreviousBookings(data,callback){
       
       let values=[];
       const sql=`select  from Bookings  where  idBookings in (select booking_id from offers where Driver_id=? and status='pending') `;
 }
 
-module.exports={CreateUser,getAllUsers,usercheck,loginCheck,InsertDriversAvailabitlity,UpdateDriversAvailabilty,driverOffersList,AcceptOffer,rejectOffer};
+module.exports={CreateUser,getAllUsers,usercheck,loginCheck,InsertDriversAvailabitlity,UpdateDriversAvailabilty,driverOffersList,AcceptOffer,rejectOffer,driverCompletedOffer};

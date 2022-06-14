@@ -25,4 +25,6 @@ router.post('/DriverAcceptedOffer',DriverController.driverAccepteOffer);
 
 router.post('/DriverRejectedOffer',DriverController.driverRejectedOffer);
 
+router.post('/driverCompletedRide',DriverController.driverCompletedoffer);
+
 module.exports=router;

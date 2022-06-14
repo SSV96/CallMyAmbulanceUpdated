@@ -33,7 +33,7 @@
                
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p >ID: <b class="driverID"> <%= result[0].id %></b> </p> 
+                <p >ID: <b class="driverDetails"> <%= result[0].id %></b> </p> 
                                      
               </div>
             </div>
@@ -41,7 +41,7 @@
 
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p>Name:  <%= result[0].fname %> <%= result[0].lname %></p> 
+              <label > Name:</label>  <p  class="driverDetails"> <%= result[0].fname %> <%= result[0].lname %></p> 
                                      
               </div>
             </div>
@@ -53,19 +53,19 @@
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p>Email :<%= result[0].email %> </p> 
+                <label >  Email :</label>    <p  class="driverDetails"><%= result[0].email %> </p> 
                                      
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p>Phone :<%= result[0].Phone %> </p> 
+                <label >  Phone :</label> <p  class="driverDetails"><%= result[0].Phone %> </p> 
                                      
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p>Joined :<%= result[0].CreatedTime %> </p> 
+                <p >Joined :<%= result[0].CreatedTime %> </p> 
                                      
               </div>
             </div>
@@ -118,9 +118,9 @@
       </div>
       <div class="col-lg-3 col-md-12 ">
         <div class="mb-3">
-          <button type="button" class="p-2 m-lg-2 btn btn-success btn-lg accept-Offer StatusButtons " onclick="ConformOffer();return false">Accept</button>
+          <button type="button" class="p-2 m-lg-2 btn btn-success btn-lg accept-Offer StatusButtons  hidden" onclick="ConformOffer();return false" >Accept</button>
 
-          <button type="button" class="p-2 btn btn-danger btn-lg accept-Offer StatusButtons " onclick="rejectOffer();return false">Reject</button>
+          <button type="button" class="p-2 btn btn-danger btn-lg accept-Offer StatusButtons hidden " onclick="rejectOffer();return false">Reject</button>
           <!-- <button type="button" class="btn btn-danger">Danger</button>                   -->
         </div>
       </div>
@@ -155,7 +155,7 @@
               <p>Fare: <b class="BookingConformDetails"> </b> </p>                                       
               </div>
             </div>
-            <button class="btn btn-primary" type="button">Complete </button>
+            <button class="btn btn-primary" type="button" onclick="driverCompletedRide(); return false;"> Complete </button>
           </div>
         </div>
         
@@ -177,7 +177,7 @@
               <p>Phone: <b class="patientDetails"> </b> </p>                                       
               </div>
             </div>
-            <button class="btn btn-outline-secondary" type="button">Cancel </button>
+            <button class="btn btn-outline-secondary" type="button" onclick="rejectOffer();return false;">Cancel </button>
           </div>
         </div>
       </div>
@@ -224,6 +224,8 @@
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+ 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/scripts/driver/driverScript.js"> </script>
 </body>
 

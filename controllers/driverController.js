@@ -196,10 +196,31 @@ function driverRejectedOffer(req,res){
 }
 
 
+function driverCompletedoffer(req,res){
+  let data=req.body;
+  console.log("From Driver Completed Controller",data);
+  DriverModal.driverCompletedOffer(data,function(err,result){
+    if(err){
+      console.log(err);
+      return res.status(400).send({
+        message:"errrors in Query",
+        success:false
+     }).render('../views/ErrorPages/queryErrors.ejs',{error:err});
+    }
+    return res.status(200).send({
+      message:"OFFERCOMPLETED ",
+      success:true,
+      data:result
+  })
+})
+}
+
+
 
 module.exports={createNewDriver,getUsers,
   DriverSignup,DriverloginAuthentication,DriverLogin,driverStatusUpdate,
 driveroffersList,
 driverAccepteOffer,
-driverRejectedOffer
+driverRejectedOffer,
+driverCompletedoffer
 };

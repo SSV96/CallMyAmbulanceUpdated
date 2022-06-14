@@ -28,7 +28,7 @@ function executeQuery(sql,data,callback){
             })
 
         }
-    })
+    });
 
 
 

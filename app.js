@@ -1,7 +1,3 @@
-
-// for bcrypt
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 require ('dotenv').config();
 const express= require('express');
 const admin=require('./models/adminModal');
@@ -19,16 +15,13 @@ const DriverRoute=require('./routes/driverRoute');
 const PatientRoute=require('./routes/patientRoute');
 const adminRoute=require('./routes/adminRoute');
 
-
-
-// const bodyParser =require("body-parser");
-// app.use(express.json());
-// app.use(bodyParser.urlencoded({extended:false}));
-// //const request = require("request");
+// Express initializes app to be a function handler
 
 const app= express();
-
-
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 // Middlewares
 
 app.set('view engine','ejs');
@@ -40,15 +33,15 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-
 //   Routers 
+
+
 app.use('/driver',DriverRoute);
 
 app.use('/patient',PatientRoute);
 
+
 app.use('/admin',adminRoute);
-
-
 
 
 
@@ -57,56 +50,38 @@ app.get("/",function(req,res){
 })
 
 
-
-
-
-
-
-app.get('/login',function(req,res){
-    
-    
+let users=[];
+io.on('connection', (socket) => {
+users.push(socket.id);
+    console.log('a user connected');
    
-    console.log('entered Login  log');
-    res.render('login');
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+        users.length=0;
+      });
+      socket.on("patient-booking",(msg)=>{
 
-})
+       io.emit("send-data-to-all-Drivers",msg);
+        console.log("form server",msg);
+    });
 
-app.get('/booking',function(req,res){
-    console.log("booking page");
-    res.render('booking');
-})
+    socket.on("driverConformedOffer",(msg)=>{
+        console.log("data received",msg);
+        io.emit("sendDriverData",msg);
+        
+    
+    });
 
-
-//email
-  
-
-
-
-
-app.get('/truncate',function(req,res){
-
-    admin.truncateAll(function(err,result){
-   
-         if(err){
-             console.log(err);
-             return res.status(100)
-         }
-         else{
-             res.status(200).render('success');
-         }
-
-
-    })
-
-
-})
-
+    console.log("INSIDE SOCKET",users);
+ });
 
 
 
         
-app.listen(process.env.PORT|| 3000,function(){
+server.listen(process.env.PORT|| 3000,function(){
+   
     console.log("server running at port 3000");
+
 });
 
 
