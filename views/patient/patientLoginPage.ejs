@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="V Sathya Swaroop">
-    <meta name="generator" content="Hugo 0.98.0">
-    <title>Patient </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="V Sathya Swaroop" />
+    <meta name="generator" content="Hugo 0.98.0" />
+    <title>Patient</title>
     <!-- Favicons -->
     <style>
       .bd-placeholder-img {
@@ -25,10 +25,11 @@
 
       .b-example-divider {
         height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {
@@ -38,7 +39,7 @@
       }
 
       .bi {
-        vertical-align: -.125em;
+        vertical-align: -0.125em;
         fill: currentColor;
       }
 
@@ -61,83 +62,114 @@
       }
     </style>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/bookingstyles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/bookingstyles.css" />
   </head>
   <body>
     <main>
       <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
-            <span class="fs-4">Hello <%= result[0].name %></span>
+          <span class="fs-4">Hello <%= result[0].name %></span>
+          <button
+            type="button"
+            class="logout-btn btn btn-danger"
+            onclick="logout()"
+          >
+            Logout
+          </button>
         </header>
-    
+
         <div class="shadow p-1 mb-4 bg-light rounded-3">
           <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Personal Details</h1>
             <div class="container">
               <div class="row">
                 <div class="p-2 col-lg-6 col-md-12">
-             <label> PatientID :</label> <label class="PatientDetails"> <%= result[0].id %> </label>
+                  <label> PatientID :</label>
+                  <label class="PatientDetails"> <%= result[0].id %> </label>
                 </div>
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label> Name :</label> <label class="PatientDetails"> <%= result[0].name %> </label>
+                  <label> Name :</label>
+                  <label class="PatientDetails"> <%= result[0].name %> </label>
                 </div>
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label> Email :</label>   <label class="PatientDetails"> <%= result[0].email %> </label>
-                </div>               
+                  <label> Email :</label>
+                  <label class="PatientDetails"> <%= result[0].email %> </label>
+                </div>
                 <div class="p-2 col-lg-6 col-md-12">
-                  <label>  Phone :</label>    <label class="PatientDetails"> <%= result[0].Phone %> </label>
+                  <label> Phone :</label>
+                  <label class="PatientDetails"> <%= result[0].Phone %> </label>
                 </div>
               </div>
-            </div>                               
+            </div>
           </div>
         </div>
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
             <div class="h-100 p-5 text-white bg-dark rounded-3">
-             <h2>Booking</h2>
+              <h2>Booking</h2>
               <div class="container">
                 <div class="row">
                   <div class="p-2 col-lg-6 col-md-12">
                     <div class="mb-3">
                       <label for="InputOrigin" class="form-label">From:</label>
-                      <input type="text" class="form-control BookingDetails">                      
+                      <input type="text" class="form-control BookingDetails" />
                     </div>
                   </div>
                   <div class="p-2 col-lg-6 col-md-12">
                     <div class="mb-3">
-                      <label for="InputDestination" class="form-label">To:</label>
-                      <input type="text" class="form-control BookingDetails">                      
+                      <label for="InputDestination" class="form-label"
+                        >To:</label
+                      >
+                      <input type="text" class="form-control BookingDetails" />
                     </div>
                   </div>
                   <div class="p-2 col-lg-6 col-md-12">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Distance:</label>
-                      <input type="text" class="form-control distanceUnits BookingDetails" onfocusout="calculateFare()" >                      
-                    </div>
-                  </div>
-                 <div class="p-2 col-lg-6 col-md-12">
-                    <div class="mb-3">
-                      <label for="Fare" class="form-label " >Fare:</label><br>
-                      <b class="fareDisplay BookingDetails"></b>                    
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Distance:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control distanceUnits BookingDetails"
+                        onfocusout="calculateFare()"
+                      />
                     </div>
                   </div>
                   <div class="p-2 col-lg-6 col-md-12">
                     <div class="mb-3">
-                      <button class="btn btn-outline-light bookingButton" type="button" >Book</button>   
-                      <b class="p-2 BookingStatus hidden">Serching for Drivers </b>    
+                      <label for="Fare" class="form-label">Fare:</label><br />
+                      <b class="fareDisplay BookingDetails"></b>
+                    </div>
+                  </div>
+                  <div class="p-2 col-lg-6 col-md-12">
+                    <div class="mb-3">
+                      <button
+                        class="btn btn-outline-light bookingButton"
+                        type="button"
+                      >
+                        Book
+                      </button>
+                      <b class="p-2 BookingStatus hidden"
+                        >Serching for Drivers
+                      </b>
                     </div>
                   </div>
                   <!-- return onclick="book(); false;                                  -->
-                  <div class="spinner-border p-2 col-lg-6 col-md-12 BookingStatus hidden">
+                  <div
+                    class="spinner-border p-2 col-lg-6 col-md-12 BookingStatus hidden"
+                  >
                     <div class="mb-3">
-                     <span class="visually-hidden">Loading...</span>                     
-                   </div>
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
                   </div>
-                  
                 </div>
-               </div>
-            
+              </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -145,85 +177,97 @@
               <h2>Driver Details</h2>
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-             <label>Id:</label> <label for="DriverName" class="form-label DriverDetails"></label>
-                                       
+                  <label>Id:</label>
+                  <label
+                    for="DriverName"
+                    class="form-label DriverDetails"
+                  ></label>
                 </div>
-              </div> 
+              </div>
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label>Name : </label> <label for="AmbulnceNo" class="form-label DriverDetails"></label>
-                                       
+                  <label>Name : </label>
+                  <label
+                    for="AmbulnceNo"
+                    class="form-label DriverDetails"
+                  ></label>
                 </div>
-              </div> 
+              </div>
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label> Email :</label> <label for="phone" class="form-label DriverDetails"></label>
-                                       
+                  <label> Email :</label>
+                  <label for="phone" class="form-label DriverDetails"></label>
                 </div>
-              </div> 
+              </div>
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <label> Phone :</label> <label for="InputEmail1" class="form-label DriverDetails"></label>
-                                       
+                  <label> Phone :</label>
+                  <label
+                    for="InputEmail1"
+                    class="form-label DriverDetails"
+                  ></label>
                 </div>
-              </div> 
-              <button class="btn btn-danger " type="button">Alert Police</button>
+              </div>
+              <button class="btn btn-danger" type="button">Alert Police</button>
             </div>
           </div>
         </div>
-
 
         <div class="p-5 mt-4 mb-4 bg-light rounded-3 table-responsive">
           <div class="container-fluid py-5 table-responsive">
             <h1 class="display-5 fw-bold">Current Ride</h1>
             <div class="row">
-               
-                <div class="p-2 col-lg-6 col-md-12">
-                  <div class="mb-3">
-                    <label for="BookingID" class="form-label">Booking ID:<b class="currentBookingDetails"></b>123</label>
-                                         
-                  </div>
-                </div> 
-                <div class="p-2 col-lg-6 col-md-12">
-                  <div class="mb-3">
-                    <label for="Origin" class="form-label">From:<b class="currentBookingDetails"></b> koduru</label>
-                                         
-                  </div>
-                </div> 
-                <div class="p-2 col-lg-6 col-md-12">
-                  <div class="mb-3">
-                    <label for="Destination" class="form-label">To:<b class="currentBookingDetails"></b>tirupati </label>
-                                         
-                  </div>
-                </div> 
-                <div class="p-2 col-lg-6 col-md-12">
-                  <div class="mb-3">
-                    <label for="Fare" class="form-label">Fare:<b class="currentBookingDetails"></b>2,000 </label>
-                                         
-                  </div>
-                </div> 
-
-                <div class="p-2 col-lg-6 col-md-12">
-                  <div class="mb-3">
-                    <label for="Date" class="form-label">Date:<b class="currentBookingDetails"></b>29-12-2021 </label>
-                                         
-                </div>
-              </div>                                              
               <div class="p-2 col-lg-6 col-md-12">
                 <div class="mb-3">
-                  <button class="btn btn-primary btn-lg" type="button">Cancel Booking</button>
-                                       
+                  <label for="BookingID" class="form-label"
+                    >Booking ID:<b class="currentBookingDetails"></b>123</label
+                  >
+                </div>
               </div>
-            </div>     
-        
-      </div> 
-    </div>
-  </div>
+              <div class="p-2 col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <label for="Origin" class="form-label"
+                    >From:<b class="currentBookingDetails"></b> koduru</label
+                  >
+                </div>
+              </div>
+              <div class="p-2 col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <label for="Destination" class="form-label"
+                    >To:<b class="currentBookingDetails"></b>tirupati
+                  </label>
+                </div>
+              </div>
+              <div class="p-2 col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <label for="Fare" class="form-label"
+                    >Fare:<b class="currentBookingDetails"></b>2,000
+                  </label>
+                </div>
+              </div>
 
-
+              <div class="p-2 col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <label for="Date" class="form-label"
+                    >Date:<b class="currentBookingDetails"></b>29-12-2021
+                  </label>
+                </div>
+              </div>
+              <div class="p-2 col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <button class="btn btn-primary btn-lg" type="button">
+                    Cancel Booking
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- previous Bookings -->
-        <div class="p-5 mt-4 mb-4 bg-dark rounded-3 table-responsive text-white">
+        <div
+          class="p-5 mt-4 mb-4 bg-dark rounded-3 table-responsive text-white"
+        >
           <div class="container-fluid py-5 table-responsive e">
             <h1 class="display-5 fw-bold">Previous Rides</h1>
             <table class="table text-white">
@@ -237,36 +281,34 @@
                   <th scope="col">fare</th>
                   <th scope="col">status</th>
                   <th scope="col">date</th>
-                 
                 </tr>
               </thead>
               <tbody>
-                <tr >
+                <tr>
                   <td class="row_Details">1</td>
                   <td class="row_Details">1</td>
                   <td class="row_Details">koduru</td>
                   <td class="row_Details">tirupati</td>
                   <td class="row_Details">123</td>
-                  <td class="row_Details  bookingStatus"5,677></td>
+                  <td class="row_Details bookingStatus" 5,677></td>
                   <td class="row_Details">conformed</td>
                   <td class="row_Details">30-May-2022</td>
-                 </tr>               
+                </tr>
               </tbody>
             </table>
-           
           </div>
         </div>
-        <footer class="pt-3 mt-4 text-muted border-top">
-          &copy; 2022
-        </footer>
+        <footer class="pt-3 mt-4 text-muted border-top">&copy; 2022</footer>
       </div>
     </main>
-    
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-   
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/patient/patient.js"></script>
- 
   </body>
 </html>

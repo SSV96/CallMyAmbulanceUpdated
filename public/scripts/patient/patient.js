@@ -1,61 +1,56 @@
 //Patient Details
-const  patientdetailsINFORMATION=document.querySelectorAll(".PatientDetails");
+const patientdetailsINFORMATION = document.querySelectorAll(".PatientDetails");
 
-const bookingStatus=document.querySelectorAll('.BookingStatus');
+const bookingStatus = document.querySelectorAll(".BookingStatus");
 
-const driverDetails=document.querySelectorAll('.DriverDetails');
+const driverDetails = document.querySelectorAll(".DriverDetails");
 
-let i=0;
+let i = 0;
 
-let bookingDetails={};
+let bookingDetails = {};
 
-let patientDetails={};
+let patientDetails = {};
 
-const Booking=document.querySelectorAll('.BookingDetails');
+const Booking = document.querySelectorAll(".BookingDetails");
 
-let bookingOBJ={};
+let bookingOBJ = {};
 
-let currentBooking =document.querySelector(".currentBooking");
-
+let currentBooking = document.querySelector(".currentBooking");
 
 var socket = io();
 
-
-
-function calculateFare(){
- 
-  document.querySelector('.fareDisplay').innerHTML=50 * Number(document.querySelector(".distanceUnits").value);
-
+function calculateFare() {
+  document.querySelector(".fareDisplay").innerHTML =
+    50 * Number(document.querySelector(".distanceUnits").value);
 }
 
-
-document.querySelector('.bookingButton').addEventListener('click',(e)=>{
+document.querySelector(".bookingButton").addEventListener("click", (e) => {
   e.preventDefault();
- 
-  let a=0;
-   const bookingDetailsTemplate=["SOURCE","DESTINATION","DISTANCE","FARE"];
-   Booking.forEach(element=>{
- 
-    bookingOBJ[`${bookingDetailsTemplate[a]}`]=element.value || element.textContent;
+
+  let a = 0;
+  const bookingDetailsTemplate = ["SOURCE", "DESTINATION", "DISTANCE", "FARE"];
+  Booking.forEach((element) => {
+    bookingOBJ[`${bookingDetailsTemplate[a]}`] =
+      element.value || element.textContent;
     a++;
-   });
-   console.log("Entered booking",bookingOBJ);
-   a=0;
-   const patientDetailsTemplate=["ID","NAME","GMAIL","PHONE"];
- 
-   patientdetailsINFORMATION.forEach(element=>{
-   
-    patientDetails[`${patientDetailsTemplate[a]}`]=element.value || element.textContent;
-   
+  });
+  console.log("Entered booking", bookingOBJ);
+  a = 0;
+  const patientDetailsTemplate = ["ID", "NAME", "GMAIL", "PHONE"];
+
+  patientdetailsINFORMATION.forEach((element) => {
+    patientDetails[`${patientDetailsTemplate[a]}`] =
+      element.value || element.textContent;
+
     a++;
-   });
+  });
 
+  console.log("Patient INFORMATION", patientDetails);
 
-    console.log("Patient INFORMATION",patientDetails);
-
-    socket.emit("patient-booking",{bookingINFO:bookingOBJ,patientINFO:patientDetails});
-
-
+  socket.emit("patient-booking", {
+    bookingINFO: bookingOBJ,
+    patientINFO: patientDetails,
+  });
 
   // console.log("from  object ",bookingOBJ);
 
@@ -74,7 +69,7 @@ document.querySelector('.bookingButton').addEventListener('click',(e)=>{
   //       'Accept': 'application/json',
   //       'Content-Type': 'application/json',
   //       },"body":JSON.stringify(bookingDetails) })
-      
+
   //     return InsertOffers;
   //     }).then(post2=>{return post2.json()}).then(
   //       post3=>{
@@ -85,20 +80,21 @@ document.querySelector('.bookingButton').addEventListener('click',(e)=>{
   //         'Accept': 'application/json',
   //         'Content-Type': 'application/json',
   //         },"body":JSON.stringify(bookingDetails) }).then(data5=>{
-           
+
   // })
- }
-);
+});
 
-
-socket.on("sendDriverData",(msg)=>{
-  console.log("msg",msg);
+socket.on("sendDriverData", (msg) => {
+  console.log("msg", msg);
   setDriverDetails(msg);
 });
 
-function setDriverDetails(msg){
-  
-  driverDetails.forEach(element=>{
-    element.textContent=msg[i++];
-  })
+function logout() {
+  fetch("/logout", { method: "get" });
+}
+
+function setDriverDetails(msg) {
+  driverDetails.forEach((element) => {
+    element.textContent = msg[i++];
+  });
 }
