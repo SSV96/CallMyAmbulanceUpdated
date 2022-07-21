@@ -15,6 +15,10 @@ router.post(
   "/admin/adminLoggedIN",
   [validator.email_validation],
   (req, res) => {
+    if (req.body.email != "sathyaswaroop@gmail.com") {
+      res.send("<h1> You are not admin</h1>");
+    }
+
     const token = jwt.generateAccessToken(req.body.email);
 
     res
