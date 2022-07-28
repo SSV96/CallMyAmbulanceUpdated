@@ -53,3 +53,14 @@
       .hidden{
         display: none;
       }
+a{text-decoration: none;
+color: azure;}
+a:hover{
+  color:white
+}
+      .logout-btn{
+        float: right;
+      }
+      /* .logout-hyperlink{
+        text-decoration: none;
+      } */

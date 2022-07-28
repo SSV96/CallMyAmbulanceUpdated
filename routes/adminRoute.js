@@ -29,6 +29,7 @@ router.post(
 );
 
 //Testing auth
+
 router.get("/getAllDrivers", jwt.authenticateToken, admnCtrl.getAllDrivers);
 
 router.get("/getBooking");
@@ -36,5 +37,9 @@ router.get("/getBooking");
 router.get("/getAllPatient", jwt.authenticateToken, admnCtrl.getAllPatient);
 
 router.get("/getAllOffers");
+
+router.get("/logout", (req, res) => {
+  res.render("/");
+});
 
 module.exports = router;

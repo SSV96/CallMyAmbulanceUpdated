@@ -1,15 +1,17 @@
-exports.sms = (username, otp, phone) => {
-  var unirest = require("unirest");
+require("dotenv").config();
 
-  var req = unirest("GET", "https://www.fast2sms.com/dev/bulkV2");
+var unirest = require("unirest");
 
+var req = unirest("GET", "https://www.fast2sms.com/dev/bulkV2");
+
+exports.generateOTP = (obj) => {
   req.query({
-    authorization:
-      "8eo9FdL3Z6zW4jGlKxbrQBUDPINsvT1mfh5igRpqkyuV7XAwnCLUpgczdYZBF0XiG8ME9o3jus6mRltT",
-    message: `Hello ${username} is ${otp} `,
+    authorization: process.env.SMS_KEY,
+    route: "v3",
+    sender_id: "FTWSMS",
+    message: `Hello ${obj.user_name} your otp for registration of Call My Ambulance APP is  ${obj.otp}`,
     language: "english",
-    route: "q",
-    numbers: "8096843678",
+    numbers: obj.phone,
   });
 
   req.headers({
@@ -18,7 +20,7 @@ exports.sms = (username, otp, phone) => {
 
   req.end(function (res) {
     if (res.error) throw new Error(res.error);
-
     console.log(res.body);
+    return res.body;
   });
 };

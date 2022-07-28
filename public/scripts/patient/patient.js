@@ -51,48 +51,15 @@ document.querySelector(".bookingButton").addEventListener("click", (e) => {
     bookingINFO: bookingOBJ,
     patientINFO: patientDetails,
   });
-
-  // console.log("from  object ",bookingOBJ);
-
-  // let response = fetch('/patient/bookingSubmit',{"method":"post",headers: {
-  //   'Accept': 'application/json',
-  //   'Content-Type': 'application/json',
-  //   },"body":JSON.stringify(bookingOBJ) }).then(data2=>{
-  //   return data2.json()
-  //   }).then(post=>{
-  //     console.log("first",post);
-  //      bookingDetails=post.responde.r2;
-  //      bookingStatus.forEach(element => {
-  //      element.classList.toggle('hidden');});
-  //     }).then(dat=>{
-  //       let InsertOffers = fetch('/patient/searchingfordrivers',{"method":"post",headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //       },"body":JSON.stringify(bookingDetails) })
-
-  //     return InsertOffers;
-  //     }).then(post2=>{return post2.json()}).then(
-  //       post3=>{
-  //         console.log("finaly got",post3)
-  //       })
-
-  //       let searchingforDrivers=fetch('/patient/searchingfordrivers',{"method":"post",headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //         },"body":JSON.stringify(bookingDetails) }).then(data5=>{
-
-  // })
 });
 
 socket.on("sendDriverData", (msg) => {
   console.log("msg", msg);
+  //Calling function to set Driver Data
   setDriverDetails(msg);
 });
 
-function logout() {
-  fetch("/logout", { method: "get" });
-}
-
+// Setting Driver data in the patient page
 function setDriverDetails(msg) {
   driverDetails.forEach((element) => {
     element.textContent = msg[i++];

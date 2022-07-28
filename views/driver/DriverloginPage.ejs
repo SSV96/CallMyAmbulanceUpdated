@@ -8,7 +8,7 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/DriverloginPage.css">
   <title>
-    <%= result[0].lname %>
+    <%= result2[0].lname %>
   </title>
 </head>
 
@@ -21,27 +21,30 @@
       <header class="pb-3 mb-4 border-bottom">
         
          <img src="/images/logos/AmbulanceLogin.png" alt="notFound" >
-          <span class="fs-4">Hello <%= result[0].fname %></span>
-       
+          <span class="fs-4"> Hello <%= result2[0].fname %> </span>
+          <button type="button" class="logout-btn btn btn-danger">
+            <a class="logout-hyperlink" href="/logout"> Logout </a>
+          </button>
+          
       </header>
   
       <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Personal Details</h1>
+          <h1 class="display-5 fw-bold">Driver Details</h1>
           <div class="row">
             
                
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p >ID: <b class="driverDetails"> <%= result[0].id %></b> </p> 
-                                     
+                <p >ID: <b class="driverDetails"> <%= result2[0].id %></b> </p> 
+                            
               </div>
             </div>
             
 
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-              <label > Name:</label>  <p  class="driverDetails"> <%= result[0].fname %> <%= result[0].lname %></p> 
+              <label > Name:</label>  <p  class="driverDetails"> <%= result2[0].fname %> <%= result2[0].lname %></p> 
                                      
               </div>
             </div>
@@ -53,19 +56,19 @@
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <label >  Email :</label>    <p  class="driverDetails"><%= result[0].email %> </p> 
+                <label >  Email :</label>    <p  class="driverDetails"><%= result2[0].email %> </p> 
                                      
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <label >  Phone :</label> <p  class="driverDetails"><%= result[0].Phone %> </p> 
+                <label >  Phone :</label> <p  class="driverDetails"><%= result2[0].Phone %> </p> 
                                      
               </div>
             </div>
             <div class="p-2 col-lg-6 col-md-12">
               <div class="mb-3">
-                <p >Joined :<%= result[0].CreatedTime %> </p> 
+                <p >Joined :<%= result2[0].CreatedTime %> </p> 
                                      
               </div>
             </div>
@@ -116,8 +119,10 @@
           <p>Fare : <b class="BookingDetails  "></b></p>                     
         </div>
       </div>
+     <!-- ACCEPT REJECT BUTTONS -->
       <div class="col-lg-3 col-md-12 ">
         <div class="mb-3">
+         
           <button type="button" class="p-2 m-lg-2 btn btn-success btn-lg accept-Offer StatusButtons  hidden" onclick="ConformOffer();return false" >Accept</button>
 
           <button type="button" class="p-2 btn btn-danger btn-lg accept-Offer StatusButtons hidden " onclick="rejectOffer();return false">Reject</button>

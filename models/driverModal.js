@@ -32,10 +32,12 @@ function usercheck(data, callback) {
   });
 }
 
+//
 function loginCheck(data, callback) {
-  let values = data.email;
+  let values = [data.Email, data.phone];
+  // let table = data.table;
   console.log("from Login Check ", values);
-  const sql = " select * from Driver_INFO where email = ?";
+  const sql = `select * from Driver_INFO where email = ? or phone =?`;
   sqlConnection.executeQuery(sql, values, function (err, result) {
     callback(err, result);
   });

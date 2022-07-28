@@ -32,3 +32,20 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+
+a{
+  text-decoration: none;
+  color: white;
+  }
+
+  .hidden{
+    display: none;
+  }
+
+.logout-btn{
+  float: right;
+}
+.logout-hyperlink{
+  text-decoration: none;
+}

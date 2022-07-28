@@ -1,24 +1,25 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="There has been an increse in Ambulance Mafia ,Authorities are trying their best to curb. But, they fail to recognise who is responsible ,with this App we can clearly know who is responsible. We keep on adding new features to make our app reliable ">
-    <meta name="author" content="Sathya Swaroop V ">
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="There has been an increse in Ambulance Mafia ,Authorities are trying their best to curb. But, they fail to recognise who is responsible ,with this App we can clearly know who is responsible. We keep on adding new features to make our app reliable "
+    />
+    <meta name="author" content="Sathya Swaroop V " />
+
     <title>Life Care Ambulance Service</title>
 
-    
-    
-
     <!-- Bootstrap core CSS -->
-    
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
 
-
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 
     <style>
       .bd-placeholder-img {
@@ -36,47 +37,114 @@
       }
     </style>
 
-    
     <!-- Custom styles for this template -->
-    <link href="/css/DriverSignupstyles.css" rel="stylesheet">
+    <link href="/css/DriverSignupstyles.css" rel="stylesheet" />
   </head>
-  <body class="text-center">
+  <body>
+    <div class="container py-4">
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <form
        
-          <main class="form-signin w-100 m-auto">
-            <form action="/driver/createDriver" method="post">
-             
-            
-              <!-- <img class="mb-4" src="/images/logos/Ambulance.png" alt="" width="72" height="57"> -->
-              <h1 class="h3 mb-3 fw-normal">Driver Signup</h1>
+       
+          action="/driver/CreateNewDriver"
+          method="post"
+          class="needs-validation"
+          novalidate
+        >
+          <!-- <img class="mb-4" src="/images/logos/Ambulance.png" alt="" width="72" height="57"> -->
+          <h1 class="h3 mb-3 fw-normal">Driver Signup</h1>
+          <div class="row">
+            <!-- First Name -->
+            <div class="col-lg-6 col-md-12 p-3">
               <div class="form-floating">
-                <input type="text" class="form-control  top " name="FirstName" placeholder="First_Name" required>
+                <input
+                  type="text"
+                  class="form-control top FirstName user-input"
+                  name="FirstName"
+                  placeholder="First_Name"
+                  required
+                />
                 <label for="floatingInput">First Name</label>
               </div>
-              <div class="form-floating ">
-                  <input type="text" class="form-control middle" name="LastName" placeholder="Last_Name" required>
-                  <label for="floatingInput">Last Name</label>
-                </div>
-                <div class="form-floating ">
-                  <input type="email" class="form-control bottom" name="Email" placeholder="Email" required>
-                  <label for="floatingInput">Email</label>
-                </div>
-                <div class="form-floating ">
-                  <input type="password" class="form-control bottom" name="password" placeholder="Email" required>
-                  <label for="floatingInput">Password</label>
-                </div>
-                <div class="form-floating ">
-                  <input type="text" class="form-control bottom" name="phone" placeholder="phone" required>
-                  <label for="floatingInput">Phone</label>
-                </div>
-          
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
-              <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
-            </form>
-          </main>
-       
+            </div>
+            <!--   First Name  END -->
 
-
-
-    
+            <!-- Last Name -->
+            <div class="col-lg-6 col-md-12 p-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control middle user-input"
+                  name="LastName"
+                  placeholder="Last_Name"
+                  required
+                />
+                <label for="floatingInput">Last Name</label>
+              </div>
+            </div>
+            <!-- Last Name End -->
+            <!-- Email -->
+            <div class="col-lg-6 col-md-12 p-3">
+              <div class="form-floating">
+                <input
+                  type="email"
+                  class="form-control bottom user-input Email"
+                  name="Email"
+                  placeholder="Email"
+                  required
+                />
+                <label for="floatingInput">Email</label>
+              </div>
+            </div>
+            <!-- Email End -->
+            <!-- Password -->
+            <div class="col-lg-6 col-md-12 p-3">
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control bottom user-input"
+                  name="password"
+                  placeholder="password"
+                  required
+                />
+                <label for="floatingInput">Password</label>
+              </div>
+            </div>
+            <!-- Password End -->
+            <!-- Phone -->
+            <div class="col-lg-6 col-md-12 p-3">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control bottom phone phone-verify user-input"
+                  name="phone"
+                  placeholder="phone"
+                  required
+                />
+                <label for="floatingInput">Phone</label>
+              </div>
+            </div>
+            <!--  -->
+            <div class="container py-2 get-otp-btn-div">
+              <div class="p-2 mb-4 bg-light rounded-3 text-center">
+                <!-- class="col-lg-6 col-md-12 p-3 get-otp-btn-div" -->
+                <div class="  p-2 ">
+                <button
+                  class=" btn btn-lg btn-primary get-otp-btn"
+                  onclick="generateOTP(); "
+                  type="button"
+                >
+                  Click to get otp
+                </button>
+              </div>
+            </div>
+          </div>
+          <!--  --><div class="text-center">
+          <p class="mt-5 mb-3 text-muted text-center">2022</p>
+       </div>
+        </form>
+      </div>
+    </div>
+    <script src="/scripts/driver/driverSignupPageScript.js"></script>
   </body>
 </html>

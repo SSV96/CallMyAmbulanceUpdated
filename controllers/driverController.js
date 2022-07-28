@@ -1,4 +1,5 @@
 const DriverModal = require("../models/driverModal");
+
 const jwt = require("../services/jwtAuth");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -11,75 +12,112 @@ function DriverLogin(req, res) {
   res.render("../views/driver/Driverlogin.ejs");
 }
 
-function createNewDriver(req, res) {
+// Creating A Driver
+async function createNewDriver(req, res) {
+  // console.log(req.body);
+  // res.send("ok");
   let data = req.body;
-  console.log("from driver Controller cre new Driver", data);
-  DriverModal.usercheck(data, function (err, result) {
-    if (err) {
-      console.log(err);
-      return res.status(100);
-    }
-    console.log(result.length);
-    if (result == 0) {
-      console.log("user doesnt exist"); //hashing
-      bcrypt.hash(data.password, saltRounds).then(function (hash) {
-        // Store hash in your password DB.
-        data.password = hash;
-        DriverModal.CreateUser(data, function (err, result) {
-          console.log(" from result", result);
-          // console.log(data," from create user");
-          if (err) {
-            console.log(err);
-            return res.status(500).send({
-              message: "Unable to Insert",
-              success: false,
-            });
-          }
+  let data1 = data.password;
+  console.log("create DriverHere", data);
+  await bcrypt.hash(data.password, saltRounds).then(function (hash) {
+    // Store hash in your password DB.
+    data.password = hash;
+    DriverModal.CreateUser(data, function (err, result) {
+      console.log(" from result", result);
+      // console.log(data," from create user");
+      if (err) {
+        console.log(err);
+        return res.status(500).send({
+          message: "Unable to Insert",
+          success: false,
+        });
+      }
 
-          DriverModal.InsertDriversAvailabitlity(data, function (err, result1) {
-            if (err) {
-              console.log("Unable to Insert status of  Availability", err);
+      DriverModal.InsertDriversAvailabitlity(data, function (err, result1) {
+        if (err) {
+          console.log("Unable to Insert status of  Availability", err);
+        } else {
+          console.log("successfullly inserted into Availability", result1);
+        }
+      });
+      //
+
+      DriverModal.loginCheck(data, function (err, result2) {
+        if (err) {
+          console.log(err);
+        }
+        if (result2.length) {
+          console.log(result);
+          let hash = result2[0].PASSWORD;
+
+          bcrypt.compare(data1, hash).then(function (result12) {
+            if (result12 == true) {
+              DriverModal.UpdateDriversAvailabilty(
+                { available: "YES", id: result2[0].id },
+                (err2, result2) => {
+                  if (err) {
+                    console.log(err);
+                    res.status(400).send({
+                      message:
+                        "ERROR IN UPDATING THE DRIVERS AVAILABILITY STATUS AFTER LOGIN",
+                    });
+                  }
+                }
+              );
+              //token
+              const token = jwt.generateAccessToken(result2[0].email);
+
+              res
+                .cookie("Jwt", token)
+                .status(200)
+                .render("../views/driver/DriverloginPage", { result2 });
             } else {
-              console.log("successfullly inserted into Availability", result1);
+              res.status(200).send("<h1>INcoorect Password</h1>");
             }
           });
-          return res.status(200).render("../views/driver/Driverlogin.ejs");
-        });
+        }
       });
-    } else {
-      console.log("user already exists");
-      return res.render("failure");
-    }
+
+      //
+    });
   });
 }
 
 function DriverloginAuthentication(req, res) {
   let data = req.body;
-
-  DriverModal.loginCheck(data, function (err, result) {
+  console.log(data, "from LOgin Modal");
+  DriverModal.loginCheck(data, function (err, result2) {
     if (err) {
       console.log(err);
     }
-    if (result.length) {
-      console.log(result);
-      let hash = result[0].PASSWORD;
+    if (result2.length) {
+      console.log(result2);
+      let hash = result2[0].PASSWORD;
 
       bcrypt.compare(data.password, hash).then(function (result1) {
-        DriverModal.UpdateDriversAvailabilty(
-          { available: "YES", id: result[0].id },
-          (err2, result2) => {
-            if (err) {
-              console.log(err);
-              res.status(400).send({
-                message:
-                  "ERROR IN UPDATING THE DRIVERS AVAILABILITY STATUS AFTER LOGIN",
-              });
+        if (result1 == true) {
+          DriverModal.UpdateDriversAvailabilty(
+            { available: "YES", id: result2[0].id },
+            (err2, result2) => {
+              if (err) {
+                console.log(err);
+                res.status(400).send({
+                  message:
+                    "ERROR IN UPDATING THE DRIVERS AVAILABILITY STATUS AFTER LOGIN",
+                });
+              }
             }
-          }
-        );
-        //token
-        const token = jwt.generateAccessToken(result[0].email);
-        res.status(200).render("../views/driver/DriverloginPage", { result });
+          );
+          //token
+          const token = jwt.generateAccessToken(result2[0].email);
+
+          res
+            .cookie("Jwt", token)
+            .status(200)
+            .render("../views/driver/DriverloginPage", { result2 });
+        } else {
+          res.status(200).send("<h1>INcoorect Password</h1>");
+        }
       });
     } else {
       console.log("user not found");
@@ -200,7 +238,6 @@ function driverCompletedoffer(req, res) {
 }
 
 module.exports = {
-  createNewDriver,
   getUsers,
   DriverSignup,
   DriverloginAuthentication,
@@ -210,4 +247,5 @@ module.exports = {
   driverAccepteOffer,
   driverRejectedOffer,
   driverCompletedoffer,
+  createNewDriver,
 };
