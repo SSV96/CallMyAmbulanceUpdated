@@ -21,6 +21,8 @@ exports.Check_Email_OR_PhoneExists = (req, res, next) => {
         if (data.phone == result[0].phone) {
           exists = exists + "  Phone ";
         }
+      } else {
+        exists = "Phone ";
       }
 
       return res.status(200).send({

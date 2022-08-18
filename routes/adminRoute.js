@@ -10,6 +10,10 @@ router.get("/adminLogin", (req, res) => {
   res.render("../views/admin/adminLogin");
 });
 
+router.get("/about", (req, res) => {
+  res.render("../views/about.ejs");
+});
+
 // To get Admin Login HomePage
 router.post(
   "/admin/adminLoggedIN",

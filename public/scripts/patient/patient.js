@@ -34,6 +34,7 @@ document.querySelector(".bookingButton").addEventListener("click", (e) => {
       element.value || element.textContent;
     a++;
   });
+
   console.log("Entered booking", bookingOBJ);
   a = 0;
   const patientDetailsTemplate = ["ID", "NAME", "GMAIL", "PHONE"];

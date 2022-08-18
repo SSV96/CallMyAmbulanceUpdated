@@ -1,3 +1,5 @@
+const patientModal = require("../models/patientModal");
+
 module.exports = function (io) {
   let users = [];
 
@@ -17,6 +19,10 @@ module.exports = function (io) {
 
     socket.on("driverConformedOffer", (msg) => {
       //here we can make room
+      // call the controller to insert Booking
+      patientModal.AmbulanceBookingRequest(msg, function () {});
+
+      //
 
       socket.join(users[0]);
 

@@ -4,11 +4,11 @@ function CreateUser(data, callback) {
   let values = Object.values(data);
 
   values[5] = new Date();
-
+  values[6] = "Joined";
   console.log(values);
 
   const sql =
-    "INSERT INTO Driver_INFO (fname,lname,email,password,phone,CreatedTime) values (?,?,?,?,?,?)";
+    "INSERT INTO Driver_INFO (fname,lname,email,password,phone,CreatedTime,status) values (?,?,?,?,?,?)";
 
   sqlConnection.executeQuery(sql, values, function (err, result) {
     callback(err, result);
