@@ -1,11 +1,9 @@
 require("dotenv").config();
 const express = require("express");
-const admin = require("./models/adminModal");
+
 const cookieParser = require("cookie-parser");
-const creUser = require("./models/driverModal");
+
 const bodyParser = require("body-parser");
-const { json } = require("express/lib/response");
-var nodemailer = require("nodemailer");
 
 const morgan = require("morgan"); // JUST FOR LOGS
 const session = require("express-session"); // for sessions
