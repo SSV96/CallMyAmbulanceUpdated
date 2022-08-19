@@ -1,4 +1,4 @@
-const adminModal = require("../models/adminModal");
+const adminModal = require("../Models/adminModal");
 
 function getAllDrivers(req, res) {
   adminModal.getAllDrivers(function (err, result) {

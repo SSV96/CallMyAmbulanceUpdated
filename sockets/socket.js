@@ -1,3 +1,4 @@
+const { dbReport } = require("../Error-Handlers/ErrorORsuccessHandlers");
 const patientModal = require("../models/patientModal");
 
 module.exports = function (io) {
@@ -20,7 +21,7 @@ module.exports = function (io) {
     socket.on("driverConformedOffer", (msg) => {
       //here we can make room
       // call the controller to insert Booking
-      patientModal.AmbulanceBookingRequest(msg, function () {});
+      patientModal.AmbulanceBookingRequest(msg, dbReport(err, result));
 
       //
 

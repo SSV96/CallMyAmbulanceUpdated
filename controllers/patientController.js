@@ -1,4 +1,4 @@
-const PatientModal = require("../models/patientModal");
+const PatientModal = require("../Models/patientModal");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("../services/jwtAuth");
