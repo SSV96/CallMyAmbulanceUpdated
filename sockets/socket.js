@@ -21,7 +21,7 @@ module.exports = function (io) {
     socket.on("driverConformedOffer", (msg) => {
       //here we can make room
       // call the controller to insert Booking
-      patientModal.AmbulanceBookingRequest(msg, dbReport(err, result));
+      //   patientModal.AmbulanceBookingRequest(msg, dbReport(err, result));
 
       //
 

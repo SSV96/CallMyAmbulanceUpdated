@@ -8,7 +8,7 @@ function CreateUser(data, callback) {
   console.log(values);
 
   const sql =
-    "INSERT INTO Driver_INFO (fname,lname,email,password,phone,CreatedTime,status) values (?,?,?,?,?,?)";
+    "INSERT INTO Driver_INFO (fname,lname,email,password,phone,CreatedTime,status) values (?,?,?,?,?,?,?)";
 
   sqlConnection.executeQuery(sql, values, function (err, result) {
     callback(err, result);
