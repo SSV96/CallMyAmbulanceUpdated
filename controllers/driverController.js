@@ -1,21 +1,18 @@
 const DriverModal = require("../models/driverModal");
-
 const jwt = require("../services/jwtAuth");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-function DriverSignup(req, res) {
+exports.DriverSignup = (req, res) => {
   res.render("../views/driver/driverSignup.ejs");
-}
-
-function DriverLogin(req, res) {
+};
+exports.DriverLogin = (req, res) => {
   res.render("../views/driver/Driverlogin.ejs");
-}
+};
 
 // Creating A Driver
-async function createNewDriver(req, res) {
-  // console.log(req.body);
-  // res.send("ok");
+
+exports.createNewDriver = async (req, res) => {
   let data = req.body;
   let data1 = data.password;
   console.log("create DriverHere", data);
@@ -40,7 +37,6 @@ async function createNewDriver(req, res) {
           console.log("successfullly inserted into Availability", result1);
         }
       });
-      //
 
       DriverModal.loginCheck(data, function (err, result2) {
         if (err) {
@@ -81,9 +77,9 @@ async function createNewDriver(req, res) {
       //
     });
   });
-}
+};
 
-function DriverloginAuthentication(req, res) {
+exports.DriverloginAuthentication = (req, res) => {
   let data = req.body;
   console.log(data, "from LOgin Modal");
   DriverModal.loginCheck(data, function (err, result2) {
@@ -124,9 +120,9 @@ function DriverloginAuthentication(req, res) {
       return res.render("failure");
     }
   });
-}
+};
 
-function getUsers(req, res) {
+exports.getUsers = (req, res) => {
   DriverModal.getAllUsers(function (err, result) {
     if (err) {
       console.log(err);
@@ -138,9 +134,9 @@ function getUsers(req, res) {
     console.log(result);
     return res.status(200).render("getusers", { result });
   });
-}
+};
 
-function driverStatusUpdate(req, res) {
+exports.driverStatusUpdate = (req, res) => {
   let data = req.body;
   console.log("from driver Update", data);
   DriverModal.UpdateDriversAvailabilty(data, function (err, result) {
@@ -154,9 +150,9 @@ function driverStatusUpdate(req, res) {
       data: result,
     });
   });
-}
+};
 
-function driveroffersList(req, res) {
+exports.driveroffersList = (req, res) => {
   let data = req.body;
   console.log("Enter into Offers Controller", data);
   DriverModal.driverOffersList(data, function (err, result) {
@@ -169,9 +165,9 @@ function driveroffersList(req, res) {
       data: result,
     });
   });
-}
+};
 
-function driverAccepteOffer(req, res) {
+exports.driverAccepteOffer = (req, res) => {
   let data = req.body;
   console.log("From Driver Accepted Controller", data);
   DriverModal.AcceptOffer(data, function (err, result) {
@@ -191,9 +187,9 @@ function driverAccepteOffer(req, res) {
       data: result,
     });
   });
-}
+};
 
-function driverRejectedOffer(req, res) {
+exports.driverRejectedOffer = (req, res) => {
   let data = req.body;
   console.log("From Driver Rejected Controller", data);
   DriverModal.rejectOffer(data, function (err, result) {
@@ -213,9 +209,9 @@ function driverRejectedOffer(req, res) {
       data: result,
     });
   });
-}
+};
 
-function driverCompletedoffer(req, res) {
+exports.driverCompletedoffer = (req, res) => {
   let data = req.body;
   console.log("From Driver Completed Controller", data);
   DriverModal.driverCompletedOffer(data, function (err, result) {
@@ -235,17 +231,4 @@ function driverCompletedoffer(req, res) {
       data: result,
     });
   });
-}
-
-module.exports = {
-  getUsers,
-  DriverSignup,
-  DriverloginAuthentication,
-  DriverLogin,
-  driverStatusUpdate,
-  driveroffersList,
-  driverAccepteOffer,
-  driverRejectedOffer,
-  driverCompletedoffer,
-  createNewDriver,
 };

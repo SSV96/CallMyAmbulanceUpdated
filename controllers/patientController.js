@@ -3,17 +3,17 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("../services/jwtAuth");
 
-function SignupPage(req, res) {
+exports.SignupPage = (req, res) => {
   console.log(__dirname);
   res.render(`../views/patient/patientSignup`);
-}
+};
 
-function CreatePatient(req, res) {
+exports.CreatePatient = (req, res) => {
   let data = req.body;
 
   console.log("from cre patient", data);
 
-  PatientModal.CreatePatient(data, function (err, result) {
+  PatientModal.CreatePatient(data, (err, result) => {
     if (err) {
       console.log(err);
       return res
@@ -23,16 +23,16 @@ function CreatePatient(req, res) {
 
     return res.status(200).render("../views/patient/patientLogin");
   });
-}
+};
 
-function PatientLogin(req, res) {
+exports.PatientLogin = (req, res) => {
   res.render("../views/patient/patientLogin");
-}
+};
 
-function PatientLoginPage(req, res) {
+exports.PatientLoginPage = (req, res) => {
   let data = req.body;
 
-  PatientModal.PatientLoginCheck(data, function (err, result) {
+  PatientModal.PatientLoginCheck(data, (err, result) => {
     if (err) {
       console.log(err);
       return res
@@ -52,19 +52,19 @@ function PatientLoginPage(req, res) {
       return res.status(200).render("../views/patient/patientSignup");
     }
   });
-}
+};
 
 //Ambulance Booking
 
-function AmbulanceBooking(req, res) {
+exports.AmbulanceBooking = (req, res) => {
   res.render("../views/patient/booking");
-}
+};
 
-function AmbulanceBookingConform(req, res) {
+exports.AmbulanceBookingConform = (req, res) => {
   console.log("See", req);
   let data = req.body;
   console.log(data);
-  PatientModal.AmbulanceBookingRequest(data, function (err, result) {
+  PatientModal.AmbulanceBookingRequest(data, (err, result) => {
     if (err) {
       console.log(err);
       res.status(400).render("../views/ErrorPages/queryErrors", { error: err });
@@ -76,11 +76,11 @@ function AmbulanceBookingConform(req, res) {
       });
     }
   });
-}
+};
 
-function getBookingsbyID(req, res) {
+exports.getBookingsbyID = (req, res) => {
   let data = req.body;
-  PatientModal.getBookingsById(data, function (err, result) {
+  PatientModal.getBookingsById(data, (err, result) => {
     if (err) {
       console.log(err);
     }
@@ -90,12 +90,12 @@ function getBookingsbyID(req, res) {
       data: result,
     });
   });
-}
+};
 
-function getCurrentBookings(req, res) {
+exports.getCurrentBookings = (req, res) => {
   let data1 = req.body;
   console.log("from getBooking", data1);
-  PatientModal.getcurrentBookingByID(data1, function (err, result) {
+  PatientModal.getcurrentBookingByID(data1, (err, result) => {
     if (err) {
       console.log(err);
     }
@@ -106,13 +106,13 @@ function getCurrentBookings(req, res) {
       data: result,
     });
   });
-}
+};
 
-function InsertOffers(req, res) {
+exports.InsertOffers = async (req, res) => {
   let data = req.body;
   console.log("Offers Controller", data);
 
-  PatientModal.Insertoffers(data, function (err, result) {
+  PatientModal.Insertoffers(data, (err, result) => {
     if (err) {
       console.log(err);
     }
@@ -123,12 +123,12 @@ function InsertOffers(req, res) {
       data: result,
     });
   });
-}
+};
 
-function getAllPatients(req, res) {
+exports.getAllPatients = async (req, res) => {
   let data = [];
 
-  PatientModal.getPatients(data, function (err, result) {
+  PatientModal.getPatients(data, (err, result) => {
     if (err) {
       console.log(err);
       return res
@@ -141,17 +141,4 @@ function getAllPatients(req, res) {
       rows: result,
     });
   });
-}
-
-module.exports = {
-  CreatePatient,
-  SignupPage,
-  getAllPatients,
-  PatientLogin,
-  PatientLoginPage,
-  AmbulanceBooking,
-  AmbulanceBookingConform,
-  getBookingsbyID,
-  getCurrentBookings,
-  InsertOffers,
 };
