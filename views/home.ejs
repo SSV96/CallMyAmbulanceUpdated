@@ -1,82 +1,279 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="V Sathya Swaroop">
-    <meta name="generator" content="Hugo 0.98.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Home Page" />
+    <meta name="author" content="V Sathya Swaroop" />
+
     <title>AMS Home</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
 
-
-    
     <!-- Custom styles for this template -->
-    <link href="css/homeStyles.css" rel="stylesheet">
+    <link href="css/homeStyles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
   </head>
-  <body >
-    
+  <body>
     <!-- Nav Bar start -->
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">🚑 🇮🇳  CMA</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.linkedin.com/in/sathya-swaroop-vandavasi-35b24122a/">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/adminLogin">Admin</a>
-        </li>
-      </ul>
-      <div class="dropdown dropdownDIV">
+    <nav class="HomeNav navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">🚑 🇮🇳 CMA</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
 
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-        Sign in
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a class="dropdown-item" href="/patient/patientSignup">Patient </a></li>
-          <li><a class="dropdown-item" href="/driver/driverSignUp">Driver </a></li>
-   
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/adminLogin">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://www.linkedin.com/in/sathya-swaroop-vandavasi-35b24122a/"
+                ><img
+                  class="gitImage"
+                  src="Images/logos/Linkedin.jpg"
+                  alt="not found"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://github.com/SwaroopLightning/CallMyAmbulanceUpdated"
+                ><img
+                  class="gitImage"
+                  src="Images/logos/git.jpeg"
+                  alt="not found"
+              /></a>
+            </li>
+          </ul>
+          <!-- Signin Login Block -->
+          <div class="login-signin-block">
+            <!-- Sign in -->
+            <div class="dropdown dropdownDIV">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sign in
+              </button>
+              <ul
+                class="dropdown-menu dropdownmenu"
+                aria-labelledby="dropdownMenu2"
+              >
+                <li>
+                  <a
+                    class="dropdownitems dropdown-item"
+                    href="/patient/patientSignup"
+                    >Patient
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdownitems dropdown-item"
+                    href="/driver/driverSignUp"
+                    >Driver
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- sign in end -->
+            <!-- Login start -->
+            <div class="dropdown dropdownDIV dropdownDIVLogin">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Login
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li>
+                  <a
+                    class="dropdownitems dropdown-item"
+                    href="/patient/patientlogin"
+                    >Patient
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdownitems dropdown-item"
+                    href="/driver/Driverlogin"
+                    >Driver
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- login end -->
+          </div>
+          <!-- sign-in login block end -->
+        </div>
       </div>
-      <div class="dropdown dropdownDIV dropdownDIVLogin">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-          Login
+    </nav>
+    <!-- nav Bar End -->
+    <!-- corousel Start -->
+    <div class="container py-4">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              class="Images d-block w-100"
+              src="Images/caraousel/ambulance.jpg"
+              alt="First slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              class="Images d-block w-100"
+              src="Images/caraousel/hospital1.jpg"
+              alt="Second slide"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li><a class="dropdown-item" href="/patient/patientlogin">Patient  </a></li>
-        <li><a class="dropdown-item" href="/driver/Driverlogin">Driver </a></li>
-        </ul>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
-  </div>
-</nav>
-    <!-- nav Bar End -->
-<!-- corousel Start -->
-<div class="container py-4" >
-  <div class="p-4 p-md-5 mt-4  mb-4 text-white rounded-3 bg-dark">
-  <div class="col-md-6 px-0">
-    <h1 class="display-4 fst-italic">Call My Ambulance</h1>
-    <p class="lead my-3">Want to book an Ambulance with affordable price ,then you are at right place.
-      Please sign in, you wont be disappointed .
-    </p>
-    
-  </div>
-</div>
-<!-- corosel end -->
+    <div class="container py-4">
+      <div class="row p-4 p-md-5 mt-4 mb-4 text-white rounded-3 bg-dark">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic">Call My Ambulance</h1>
+          <p class="lead my-3">
+            Want to book an Ambulance with affordable price ,then you are at
+            right place. Please sign in, you wont be disappointed .
+          </p>
+        </div>
+        <div class="col-md-6 px-0">
+        
+        </div>
+        <div class="col-md-6 px-0">
+          <p class="lead my-3">
+           <ul><li>We wont charge much , we strictly follow government rules.</li>
+            <li>
+              Your safety is our Highest Priority. We follow covid Guidelines strictly.
+             </li> </ul>  
+           
+          
+          </p>
+        </div>
+      </div>
 
-</div>
+      <!-- corosel end -->
+      <div class="container py-4">
+        <div class="row p-4 p-md-5 mt-4 mb-4 text-white rounded-3 bg-dark">
+          <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Want to work with us ?</h1>
+             </div>
+          <div class="col-md-6 px-0">
+      <p>
+        Sign in as Driver,
+        <ul>
+          <li>
+            Use your mobile number for verification.
+          </li>
+          <li>
+            Provide a valid Email.
+          </li>
+          <li>
+            You will join ,after complete verification by our representative.
+          </li>
+        </ul>
+      </p>
+          </div>
+        </div>
+      </div>
+    </div>
+<footer>
 
-</div>    
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+ <div>
+  <p>
+   
+  </p>
+  <div>
+    All rights reserved
+
+  </div>
+  <div>
+  This is responsive site <br>
+    designed by <i>sathya swaroop</i>
+you can reach me : <a href="mailto:sathyaswaroopvandavasi@gmail.com?subject = Feedback&body = Message"><img class="mail" src="Images/mail.jpg" alt="not found"></a>  
+  </div>
+  
+  <div>
+   2022
+  </div>
+ </div>
+
+
+</footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

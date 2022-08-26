@@ -1,10 +1,49 @@
+.HomeNav{
+  
+  color: aqua;
+}
+.gitImage{
+  height: 35px;
+}
+
+.login-signin-block{
+  display: inline-flex;
+  margin-right: 60px;
+}
+
 div.dropdown{
-  position: relative;
   padding: 8px;
 }
 .col-middle{
   border: solid red 2px;
 }
 .dropdownDIVLogin{
+ 
   padding-right: 6px;
+ }
+a:hover {
+color: black;
+}
+.Images{
+  border-radius: 5px;
+}
+.dropdownmenu{
+width: 50%;
+}
+.dropdownitems:hover{
+  color: antiquewhite;
+background-color: rgb(1, 12, 1);
+}
+footer{
+
+  font-family: 'Courier New', Courier, monospace;
+  color: aliceblue;
+  margin: 5px;
+  padding: 3px;
+  background-color: #050937;
+  border-radius: 5px;
+  text-align:center;
+}
+.mail{
+height: 30px;
 }
